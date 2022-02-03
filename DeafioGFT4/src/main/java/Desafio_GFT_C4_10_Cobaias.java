@@ -1,25 +1,33 @@
 import java.util.Scanner;
 public class Desafio_GFT_C4_10_Cobaias {
     public static void main(String[] args) {
-                Scanner read = new Scanner(System.in);
-                char c; // caracter de controle;
-                double[] cob = {0.0,0.0,0.0}; // variável de controle da quantidade de animais de cada espécie;
-                char[] spc = {'C','R','S'}; // Identificador reduzido/código de cada espécie;
-                String[] txt = {"coelhos","ratos","sapos"}; // Identificador literal de cada espécie ;
-                double smt = 0.0, input;  // Variáveis de controle: Quantidade geral de cobaias e entrada de dados;
-                int lmt = read.nextInt(); // Quantidade de dados inseridos;
-                for(int i = 0; i < lmt ; i++){
-                    input = read.nextInt();
-                    c = read.next().charAt(0);
-                    for (int j = 0; j < spc.length; j++) {
-                        if (c == spc[j]) {
-                            cob[j] += input; } }
-                    smt += input;
+        Scanner scan = new Scanner(System.in);
+        char c;
+        double[] somaCobaias={0.0,0.0,0.0};
+        char[] specificacaoCobaias={'C','R','S'};
+        String[] cobaias={"Coelho","Rato","Sapo"};
+        double somaTotal=0.0;
+        System.out.println("Digite o total de insercoes");
+        double contador = scan.nextInt();
+        double entradaDados;
+        for(int i=0;i<contador;i++){
+            System.out.println("Digite o numero de cobaia e o tipo:");
+            entradaDados=scan.nextInt();
+            c=scan.next().charAt(0);
+            for(int j=0;j<specificacaoCobaias.length;j++){
+                if(c==specificacaoCobaias[j]){
+                    somaCobaias[j]+=entradaDados;
                 }
-                System.out.printf("Total: %.0f cobaias\n", smt);
-                for (int i = 0; i < cob.length; i++)
-                { System.out.printf("Total de %s: %.0f\n", txt[i], cob[i]); }
-                for (int i = 0; i < cob.length; i++)
-                { System.out.printf("Percentual de %s: %.2f %%\n", txt[i], (cob[i] / smt) *100 ); }
             }
+            somaTotal+=entradaDados;
+            System.out.println("Total de cobaias "+somaTotal);
+            for(int k=0;k<somaCobaias.length;k++){
+                System.out.printf("Total de %s: %.0f\n",cobaias[k],somaCobaias[k]);
+            }
+            for(int l =0;l<somaCobaias.length;l++){
+                System.out.printf("Percentual de %s: %.2f %%n",cobaias[l],(somaCobaias[l]/somaTotal)*100);
+            }
+
         }
+    }
+}
